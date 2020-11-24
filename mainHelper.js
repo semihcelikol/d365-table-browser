@@ -10,6 +10,16 @@ document.addEventListener("click", (e) => {
         tableName = document.getElementById("tableName").value;
         companyCode = document.getElementById("companyCode").value;
 
-        window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+        var ret = baseUrl.search(".com/");
+
+        if(ret > 0)
+        {
+            window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+        }
+        else
+        {
+            baseUrl += "/";
+            window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+        }
     }
 })
