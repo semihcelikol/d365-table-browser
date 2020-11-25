@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Dynamics 365 Show Table Browser",
     "description": "Microsoft Dynamics 365 Show Table Browser",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Semih Çelikol",
     "homepage_url": "https://github.com/semihcelikol/d365-table-browser",
     "icons": {

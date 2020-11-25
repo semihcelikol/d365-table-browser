@@ -12,14 +12,23 @@ document.addEventListener("click", (e) => {
 
         var ret = baseUrl.search(".com/");
 
-        if(ret > 0)
+        if((baseUrl != "")
+        && tableName != ""
+        && companyCode != "")
         {
-            window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+            if(ret > 0)
+            {
+                window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+            }
+            else
+            {
+                baseUrl += "/";
+                window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+            }
         }
         else
         {
-            baseUrl += "/";
-            window.open(baseUrl + "?mi=SysTableBrowser&TableName="+tableName+"&cmp="+companyCode, "_blank");
+            alert("Tüm alanları doldurmalısınız.");
         }
     }
 })
