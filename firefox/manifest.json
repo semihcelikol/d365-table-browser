@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "Dynamics 365 Show Table Browser",
+    "description": "Microsoft Dynamics 365 Show Table Browser",
+    "version": "1.0.1",
+    "author": "Semih Çelikol",
+    "homepage_url": "https://github.com/semihcelikol/d365-table-browser",
+    "icons": {
+      "16": "img/dynamics-365-16.png",
+      "48": "img/dynamics-365-48.png",
+      "128": "img/dynamics-365-128.png"
+    },
+  
+    "permissions": [
+      "tabs",
+      "contextMenus"
+    ],
+  
+    "background": {
+      "scripts": [ "mainHelper.js"]
+    },
+  
+    "browser_action": {
+      "browser_style": true,
+      "default_icon": {
+        "19": "img/dynamics-365-48.png",
+        "38": "img/dynamics-365-48.png"
+      },
+      "default_popup": "index.html"
+    }
+  }
