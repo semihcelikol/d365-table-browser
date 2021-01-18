@@ -11,13 +11,8 @@
       "128": "img/dynamics-365-128.png"
     },
   
-    "permissions": [
-      "tabs",
-      "contextMenus"
-    ],
-  
     "background": {
-      "scripts": [ "mainHelper.js"]
+      "scripts": ["mainHelper.js"]
     },
   
     "browser_action": {
