@@ -6,3 +6,5 @@ Enter Base url + Table name + Company > Show table browser
 
 * Firefox add-ons link: https://addons.mozilla.org/tr/firefox/addon/d365-show-table-browser/
 * Chrome add-ons link: https://chrome.google.com/webstore/detail/dynamics-365-show-table-b/pneacolngocdibmelfiiebchajjhggdl?hl=tr
+
+☕ You can thank me and support me by ordering a coffee :) https://www.buymeacoffee.com/semihc
