@@ -2,42 +2,42 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Dynamics 365 Show Table Browser</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>D365 F&O Show Table Browser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Scripts -->
+    <script src="mainHelper.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Dynamics 365 Show Table Browser</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand" href="#">D365 F&O Show Table Browser</a>
 </nav>
 
 <div class="container">
     <div class="row">
-        <div class="form-group col-md-2">
+        <div class="col-md-4">
             <label for="baseUrl">Base Url</label>
             <input type="text" class="form-control" id="baseUrl" placeholder="https://domainName.com/">
         </div>
     </div>
 
     <div class="row">
-        <div class="form-group col-md-2">
+        <div class="col-md-4">
             <label for="tableName">Table Name</label>
             <input type="text" class="form-control" id="tableName" placeholder="CustTable">
         </div>
     </div>
 
     <div class="row">
-        <div class="form-group col-md-2">
+        <div class="col-md-4">
             <label for="companyCode">Company Code</label>
             <input type="text" class="form-control" id="companyCode" placeholder="Test">
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <input type="button" name="btnShow" class="btn btn-primary"  value="Show/Go"/>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-6">
+            <button id="btnShow" class="btn btn-primary">Show/Go</button>
         </div>
     </div>
 </div>
@@ -46,17 +46,23 @@
 <p></p>
 
 <div class="container">
-<div class="row">
-      <div class="col-md-5">
-        <h2>Github</h2>
-        <p>Github Repositories</p>
-		<p><input type="button" name="btnViewDetails" class="btn btn-secondary"  value="View details »"/></p>
-      </div>
+    <div class="row">
+        
+        <div class="col-md-6">
+            <h2>Github</h2>
+            <button id="btnGithub" class="btn btn-secondary">Github Repositories</button>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Support me :)</h2>
+            <button id="btnBuymeacoffee" class="btn">
+                <img id="imgBuymeacoffee" src="img/buymeacoffee-blue-button.png" width="200" alt="Buy me a coffee"/>
+            </button>
+        </div>
+
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="mainHelper.js"></script>
 <br>
 <footer class="container">
   <p>© semihcelikol.com</p>
