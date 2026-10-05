@@ -25,11 +25,9 @@ window.onload = function() {
         });
     }
 
-    // Ortam seçildiğinde
     envSelect.addEventListener("change", function() {
         if(this.value) {
             baseUrlInput.value = this.value;
-            // Eğer seçilen değer kayıtlı ortamlarımızdan biriyse Sil butonunu göster
             const isSaved = savedEnvs.some(e => e.url === this.value);
             btnDeleteEnv.style.display = isSaved ? "block" : "none";
         } else {
@@ -37,32 +35,41 @@ window.onload = function() {
         }
     });
 
-    // Yeni ortam ekleme panelini aç/kapat
     btnToggleAddEnv.addEventListener("click", function() {
         const div = document.getElementById("addEnvDiv");
         div.style.display = div.style.display === "none" ? "flex" : "none";
     });
 
-    // Yeni ortamı kaydet
     btnSaveEnv.addEventListener("click", function() {
         const name = document.getElementById("newEnvName").value.trim();
         const url = document.getElementById("newEnvUrl").value.trim();
         
-        if(name && url) {
-            savedEnvs.push({ name: name, url: url });
-            saveToStorage('envs', savedEnvs);
-            renderEnvs();
-            envSelect.value = url;
-            baseUrlInput.value = url;
-            btnDeleteEnv.style.display = "block"; // Yeni eklendiği için sil butonu görünsün
-            
-            document.getElementById("newEnvName").value = "";
-            document.getElementById("newEnvUrl").value = "";
-            document.getElementById("addEnvDiv").style.display = "none";
+        if(!name || !url) {
+            alert("Please provide both environment name and URL.");
+            return;
         }
+
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            alert("Error: URL must start with 'http://' or 'https://'.");
+            return;
+        }
+        if (!url.includes(".com")) {
+            alert("Error: URL must contain a valid domain extension (e.g., .com).");
+            return;
+        }
+        
+        savedEnvs.push({ name: name, url: url });
+        saveToStorage('envs', savedEnvs);
+        renderEnvs();
+        envSelect.value = url;
+        baseUrlInput.value = url;
+        btnDeleteEnv.style.display = "block";
+        
+        document.getElementById("newEnvName").value = "";
+        document.getElementById("newEnvUrl").value = "";
+        document.getElementById("addEnvDiv").style.display = "none";
     });
 
-    // Seçili Ortamı Sil
     btnDeleteEnv.addEventListener("click", function() {
         const selectedUrl = envSelect.value;
         if(selectedUrl) {
@@ -71,11 +78,10 @@ window.onload = function() {
             renderEnvs();
             envSelect.value = "";
             baseUrlInput.value = "";
-            this.style.display = "none"; // Silme butonunu gizle
+            this.style.display = "none";
         }
     });
 
-    // Tabloyu favoriye ekle
     btnStar.addEventListener("click", function() {
         const tableName = document.getElementById("tableName").value.trim();
         if(tableName && !favoriteTables.includes(tableName)) {
@@ -92,10 +98,9 @@ window.onload = function() {
 
 function renderEnvs() {
     const envSelect = document.getElementById("envSelect");
-    // Mevcut seçimi hafızada tut
     const currentVal = envSelect.value;
     
-    envSelect.innerHTML = '<option value="">-- Ortam Seçin veya URL Girin --</option>';
+    envSelect.innerHTML = '<option value="">-- Select or Enter URL --</option>';
     
     savedEnvs.forEach(env => {
         let opt = document.createElement("option");
@@ -104,7 +109,6 @@ function renderEnvs() {
         envSelect.appendChild(opt);
     });
 
-    // Eğer eski seçim hala listedeyse onu seçili bırak
     if (savedEnvs.some(e => e.url === currentVal)) {
         envSelect.value = currentVal;
     }
@@ -117,10 +121,9 @@ function renderChips() {
     favDiv.innerHTML = "";
     histDiv.innerHTML = "";
 
-    // Favorileri Çiz
     if (favoriteTables.length > 0) {
         let favTitle = document.createElement("div");
-        favTitle.innerHTML = "<small class='text-muted' style='font-size:11px;'>Favoriler:</small><br>";
+        favTitle.innerHTML = "<small class='text-muted' style='font-size:11px;'>Favorites:</small><br>";
         favDiv.appendChild(favTitle);
 
         favoriteTables.forEach(table => {
@@ -131,12 +134,11 @@ function renderChips() {
             textSpan.innerHTML = "⭐ " + table;
             textSpan.onclick = () => document.getElementById("tableName").value = table;
             
-            // Silme Çarpısı
             let closeSpan = document.createElement("span");
             closeSpan.innerHTML = "&times;";
             closeSpan.className = "chip-close";
             closeSpan.onclick = (e) => {
-                e.stopPropagation(); // Tıklamanın alt elementlere inmesini engelle
+                e.stopPropagation(); 
                 favoriteTables = favoriteTables.filter(t => t !== table);
                 saveToStorage('favorites', favoriteTables);
                 renderChips();
@@ -148,10 +150,9 @@ function renderChips() {
         });
     }
 
-    // Geçmişi Çiz
     if (historyTables.length > 0) {
         let histTitle = document.createElement("div");
-        histTitle.innerHTML = "<small class='text-muted mt-1 d-block' style='font-size:11px;'>Son Arananlar:</small>";
+        histTitle.innerHTML = "<small class='text-muted mt-1 d-block' style='font-size:11px;'>Recent Searches:</small>";
         histDiv.appendChild(histTitle);
 
         historyTables.forEach(table => {
@@ -162,7 +163,6 @@ function renderChips() {
             textSpan.innerHTML = table;
             textSpan.onclick = () => document.getElementById("tableName").value = table;
 
-            // Geçmiş için de Silme Çarpısı ekledik
             let closeSpan = document.createElement("span");
             closeSpan.innerHTML = "&times;";
             closeSpan.className = "chip-close";
@@ -186,6 +186,16 @@ function openTableBrowserLink() {
     const companyCode = document.getElementById("companyCode").value.trim();
 
     if (baseUrl !== "" && tableName !== "" && companyCode !== "") {
+        
+        if (!baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
+            alert("Error: Base URL must start with 'http://' or 'https://'.");
+            return;
+        }
+        if (!baseUrl.includes(".com")) {
+            alert("Error: Base URL must contain a valid domain extension (e.g., .com).");
+            return;
+        }
+
         saveToStorage('lastCompany', companyCode);
 
         if (!historyTables.includes(tableName)) {
@@ -201,7 +211,7 @@ function openTableBrowserLink() {
         
         openLink(baseUrl + "?mi=SysTableBrowser&TableName=" + tableName + "&cmp=" + companyCode);
     } else {
-        alert("Lütfen tüm alanları doldurun.");
+        alert("Please fill in all required fields.");
     }
 }
 
@@ -211,11 +221,9 @@ function saveToStorage(key, data) {
         obj[key] = data;
         chrome.storage.local.set(obj, function() {
             if (chrome.runtime.lastError) {
-                alert("Kaydetme hatası: " + chrome.runtime.lastError.message);
+                alert("Storage error: " + chrome.runtime.lastError.message);
             }
         });
-    } else {
-        alert("Tarayıcı depolama alanına erişilemiyor! Lütfen eklentiyi silip tekrar yükleyin.");
     }
 }
 

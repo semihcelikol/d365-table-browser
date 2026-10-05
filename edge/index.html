@@ -18,28 +18,28 @@
 
 <div class="container mt-3">
     
-    <!-- Ortam (Environment) Seçimi -->
+    <!-- Environment Selection -->
     <div class="row mb-2">
         <div class="col-md-12">
             <label for="envSelect" class="form-label mb-1">Environment</label>
             <div class="input-group input-group-sm">
                 <select class="form-select" id="envSelect">
-                    <option value="">-- Ortam Seçin veya URL Girin --</option>
+                    <option value="">-- Select or Enter URL --</option>
                 </select>
-                <!-- Silme Butonu (Başlangıçta Gizli) -->
-                <button class="btn btn-outline-danger" type="button" id="btnDeleteEnv" style="display: none;" title="Seçili Ortamı Sil">🗑️</button>
-                <button class="btn btn-outline-secondary" type="button" id="btnToggleAddEnv" title="Yeni Ortam Ekle">+</button>
+                <!-- Delete Button (Hidden initially) -->
+                <button class="btn btn-outline-danger" type="button" id="btnDeleteEnv" style="display: none;" title="Delete Selected Environment">🗑️</button>
+                <button class="btn btn-outline-secondary" type="button" id="btnToggleAddEnv" title="Add New Environment">+</button>
             </div>
         </div>
     </div>
 
-    <!-- Yeni Ortam Ekleme Alanı (Başlangıçta Gizli) -->
+    <!-- Add New Environment Area (Hidden initially) -->
     <div class="row mb-2" id="addEnvDiv" style="display: none;">
         <div class="col-md-12">
             <div class="input-group input-group-sm">
-                <input type="text" class="form-control" id="newEnvName" placeholder="Örn: Dev">
+                <input type="text" class="form-control" id="newEnvName" placeholder="e.g. Dev">
                 <input type="text" class="form-control" id="newEnvUrl" placeholder="https://...">
-                <button class="btn btn-success" type="button" id="btnSaveEnv">Kaydet</button>
+                <button class="btn btn-success" type="button" id="btnSaveEnv">Save</button>
             </div>
         </div>
     </div>
@@ -52,18 +52,18 @@
         </div>
     </div>
 
-    <!-- Tablo Adı ve Favoriye Ekleme -->
+    <!-- Table Name and Add to Favorites -->
     <div class="row mb-2">
         <div class="col-md-12">
             <label for="tableName" class="form-label mb-1">Table Name</label>
             <div class="input-group input-group-sm">
                 <input type="text" class="form-control" id="tableName" placeholder="CustTable">
-                <button class="btn btn-outline-warning" type="button" id="btnStar" title="Favorilere Ekle">⭐</button>
+                <button class="btn btn-outline-warning" type="button" id="btnStar" title="Add to Favorites">⭐</button>
             </div>
         </div>
     </div>
 
-    <!-- Favoriler ve Geçmiş Etiketleri -->
+    <!-- Favorites and History Chips -->
     <div class="row mb-2">
         <div class="col-md-12">
             <div id="favoritesContainer"></div>
