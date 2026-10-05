@@ -1,32 +1,25 @@
 {
-    "manifest_version": 3,
-    "name": "D365 F&O Show Table Browser",
-    "description": "Microsoft Dynamics 365 Show Table Browser",
-    "version": "1.0.0",
-    "author": "Semih Çelikol",
-    "homepage_url": "https://github.com/semihcelikol/d365-table-browser",
-    "icons": {
+  "manifest_version": 3,
+  "name": "D365 F&O Show Table Browser",
+  "description": "Microsoft Dynamics 365 Show Table Browser",
+  "version": "1.1.0",
+  "author": "Semih Çelikol",
+  "homepage_url": "https://github.com/semihcelikol/d365-table-browser",
+  "icons": {
+    "16": "img/d365-16.png",
+    "48": "img/d365-48.png",
+    "128": "img/d365-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_icon": {
       "16": "img/d365-16.png",
       "48": "img/d365-48.png",
       "128": "img/d365-128.png"
     },
-  
-    "content_scripts": [{
-      "js":["mainHelper.js"],
-      "matches": [
-        "https://*/*",
-        "http://*/*",
-        "https://github.com/semihcelikol/d365-table-browser",
-        "https://www.buymeacoffee.com/semihc"
-      ]
-    }]
-    ,
-    "action": {
-      "default_icon": {
-        "19": "img/d365-48.png",
-        "38": "img/d365-48.png"
-      },
-      "default_title": "Dynamics 365 F&O Show Table Browser",
-      "default_popup": "index.html"
-    }
+    "default_title": "D365 F&O Show Table Browser",
+    "default_popup": "index.html"
   }
+}
