@@ -2,7 +2,7 @@
 
 Enter Base url + Table name + Company > Show table browser
 
-![d365TableBrowser](https://addons.mozilla.org/user-media/previews/full/248/248075.png?modified=1622136365, "Microsoft Dynamics 365 Table Browser")
+![d365TableBrowser](https://addons.mozilla.org/user-media/previews/full/419/419470.png?modified=1791223871, "Microsoft Dynamics 365 Table Browser")
 
 * Firefox add-ons link: https://addons.mozilla.org/tr/firefox/addon/d365-show-table-browser/
 * Chrome add-ons link: https://chrome.google.com/webstore/detail/d365-fo-show-table-browse/figcljfgdlbihegdcckegeakgbgdeiil?hl=en&authuser=0
